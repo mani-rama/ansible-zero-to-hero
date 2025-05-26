@@ -40,11 +40,11 @@ above command will create 8 file
 once it is create we can write the playbook as
 
 
-- hosts: localhost
+ - hosts: localhost
   <br>
-  connection: localhost
+   connection: localhost
   <br>
-  roles:
+   roles:
     - ec2
 
   
