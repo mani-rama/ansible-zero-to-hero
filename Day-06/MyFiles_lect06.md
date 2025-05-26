@@ -29,9 +29,9 @@ ansible-galaxy role init ec2
 ```
 ec2 - is directory name which is going to create after the command execution
 above command will create 8 file 
-1. defaults  #defaults variable we can put here
-2. files  #any file we need to copy src to dest we can put here
-3. handlers  #after the main task any tast we need to perform that task put here
+1. defaults  # defaults variable we can put here
+2. files  # any file we need to copy src to dest we can put here
+3. handlers  # after the main task any tast we need to perform that task put here
 4. meta  # meta data of playbook
 5. tasks  # main tasks playbook file 
 6. templates  # any template we are using
@@ -45,5 +45,53 @@ once it is create we can write the playbook as
   roles:
     - ec2
 ```
-  
+
+inside task > main.yml file
+```
+- name: start an instance with a public IP address
+  amazon.aws.ec2_instance:
+    name: "public-compute-instance"
+    #key_name: "prod-ssh-key"
+    #vpc_subnet_id: subnet-5ca1ab1e
+    instance_type: c5.large
+    security_group: default
+    region: us-east-1
+    aws_access_key: "{{ ec2_access_key }}"  # from vault
+    aws_secret_key: "{{ ec2_secret_key }}"   # from vault
+    network_interfaces:
+      - assign_public_ip: true
+    image_id: ami-123456
+    tags:
+      Environment: Testing
+```
+
+to talk to api we need access key and secret key from aws 
+<br>
+if we put access and secret key inside the playbook then secure issue will get so overcome ansible has vault system.
+
+setup ansible-vault
+this is given in pre-requisite docs
+
+to run the playbook
+```
+ansible-playbook -i <any inverntory> ec2.yml --vault-pawwsord-file vault.pass
+```
+#inverntory file is not required as we are create the resource
+we need to pass the vault password with this command 
+
+## variables
+Variable has precedence 
+
+https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_variables.html#ansible-variable-precedence
+
+with this above link we can get the variable and precedence
+
+
+
+
+
+
+
+
+
 
