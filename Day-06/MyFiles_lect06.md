@@ -41,9 +41,7 @@ once it is create we can write the playbook as
 
 ```
 - hosts: localhost
-  <br>
   connection: localhost
-  <br>
   roles:
     - ec2
 ```
