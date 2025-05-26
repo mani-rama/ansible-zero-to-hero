@@ -1,0 +1,7 @@
+# this is details of lect day 08
+
+### Order of excution of tasks
+the defualts nature of ansible is to go task by task which means example : ansible has to excute the 3 tasks and ansible is excuting the 1 task then only
+and if only 1st task is completed + successfull then only it move to task number 2nd and only and if only the 2nd task is completed + successfull then only it 
+move to task 3rd. If suppose task 1st failed then ansible will not excuted the task 2nd and 3rd.
+This is the default nature of ansible
