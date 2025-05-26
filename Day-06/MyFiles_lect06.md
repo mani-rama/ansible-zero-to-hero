@@ -37,12 +37,13 @@ above command will create 8 file
 6. templates  # any template we are using
 7. tests  # test command playbook
 8. vars  # varible playbook
-once it is create we can write the playbook as 
----
+once it is create we can write the playbook as
+
+
 - hosts: localhost
   connection: localhost
   roles:
     - ec2
----
+
   
 
